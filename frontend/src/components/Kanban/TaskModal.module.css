@@ -1,0 +1,110 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.flexRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.required {
+  color: var(--accent-danger);
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="date"],
+.formGroup textarea,
+.formGroup select {
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.fileInput {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.fileInput::file-selector-button {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: var(--bg-primary) 0.2s;
+}
+
+.fileInfo {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-top: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cancelBtn {
+  padding: 0.6rem 1rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.cancelBtn:hover {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+.submitBtn {
+  padding: 0.6rem 1.25rem;
+  background-color: var(--accent-primary);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitBtn:hover {
+  background-color: var(--accent-hover);
+}
+
+.submitBtn:disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+}

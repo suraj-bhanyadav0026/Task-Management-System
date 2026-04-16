@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: taskflow_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - taskflow_network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: taskflow_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb://database:27017/task_management
+      - PORT=5000
+      - JWT_SECRET=production_ready_ultra_secure_jwt_secret_key_987654321
+      - JWT_EXPIRE=30d
+    volumes:
+      - backend_uploads:/app/uploads
+    depends_on:
+      - database
+    networks:
+      - taskflow_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: taskflow_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - taskflow_network
+
+volumes:
+  mongo_data:
+  backend_uploads:
+
+
+networks:
+  taskflow_network:
+    driver: bridge
